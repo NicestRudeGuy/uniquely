@@ -90,6 +90,7 @@ body {
     -0.03em -0.03em 0 rgba(0, 0, 0, 1), -0.03em 0.08em 0 rgba(0, 0, 0, 1),
     -0.03em 0 0 rgba(0, 0, 0, 1);
 }
+
 h1:hover {
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #d818ff,
     0 0 30px #d818ff, 0 0 40px #d818ff, 0 0 55px #d818ff, 0 0 75px #d818ff;
@@ -113,17 +114,14 @@ h1:hover {
   margin: 5px 2px;
   border-radius: 50%;
   width: 70px;
-  opacity: 0.5;
   transition: 0.3s ease-in;
-}
-
-.fa:hover {
-  opacity: 1;
+  filter: grayscale(90%);
 }
 
 .fa-facebook {
   background: #3b5998;
   color: white;
+  /*  filter: grayscale(0%); */
 }
 
 .fa-twitter {
@@ -133,14 +131,12 @@ h1:hover {
 
 .fa-instagram {
   background: #d6249f;
-  background: radial-gradient(
-    circle at 30% 107%,
-    #fdf497 0%,
-    #fdf497 5%,
-    #fd5949 45%,
-    #d6249f 60%,
-    #285aeb 90%
-  );
+  background: radial-gradient(circle at 30% 107%,
+      #fdf497 0%,
+      #fdf497 5%,
+      #fd5949 45%,
+      #d6249f 60%,
+      #285aeb 90%);
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
 
   color: white;
@@ -153,11 +149,12 @@ h1:hover {
 }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 400px) {
   .title {
+    position: relative;
     width: 10%;
     height: auto;
-    font-size: 65px;
+    font-size: 60px;
     margin: 20px;
     padding-left: 20px;
     padding-top: 20px;
@@ -171,6 +168,7 @@ h1:hover {
   .buttonCheck {
     width: 70%;
   }
+
   .inputUserName {
     margin: 10px;
     text-align: center;

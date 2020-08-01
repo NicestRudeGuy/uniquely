@@ -1,14 +1,35 @@
 import React, { useState } from "react";
-//import axios from "axios";
+import axios from "axios";
 import "./App.css";
 
 const App = () => {
   const [input, setInput] = useState("");
   //console.log(input);
-  const fetchData = (event) => {
+  const checkUserName = (event) => {
     event.preventDefault();
     console.log(input);
+    //find a regex that allows current username standards
+    const userRegex = /\W/;
+    if (userRegex.test(input)) {
+      alert("cant have symbols");
+    } else {
+      fetchUserNames(input);
+    }
     setInput("");
+  };
+
+  const fetchUserNames = async () => {
+    try {
+      const response = await axios.get(`https://instagram.com/${input}`);
+
+      document.querySelector(".fa-instagram").style.filter = "grayscale(100%)";
+
+      console.log(response);
+    } catch (error) {
+      document.querySelector(".fa-instagram").style.filter = "grayscale(0%)";
+
+      console.log(error);
+    }
   };
 
   return (
@@ -23,15 +44,15 @@ const App = () => {
             type="text"
             id="userName"
             value={input}
-            onChange={(event) => setInput(event.target.value)}
+            onChange={(event) => setInput(event.target.value.trim())}
           />
           <button
             className="buttonCheck"
-            /* disabled={!input}*/
+            disabled={!input}
             type="submit"
             variant="contained"
             color="secondary"
-            onClick={fetchData}
+            onClick={checkUserName}
           >
             Check
           </button>
