@@ -9,9 +9,9 @@ const App = () => {
     event.preventDefault();
     console.log(input);
     //find a regex that allows current username standards
-    const userRegex = /\W/;
-    if (userRegex.test(input)) {
-      alert("cant have symbols");
+    const userRegex = /^[^0-9][a-zA-Z0-9_]+$/;
+    if (!userRegex.test(input)) {
+      alert("User name cant start with a no");
     } else {
       fetchUserNames(input);
     }
@@ -19,12 +19,15 @@ const App = () => {
   };
 
   const fetchUserNames = async () => {
+    /*     axios.defaults.headers.common["Content-Type"] =
+      "application/x-www-form-urlencoded";
+    axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+    axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"; */
     try {
-      const response = await axios.get(`https://instagram.com/${input}`);
+      const resInsta = await axios.get(`https://instagram.com/${input}`);
+      document.querySelector(".fa-instagram").style.filter = "grayscale(90%)";
 
-      document.querySelector(".fa-instagram").style.filter = "grayscale(100%)";
-
-      console.log(response);
+      console.log(resInsta);
     } catch (error) {
       document.querySelector(".fa-instagram").style.filter = "grayscale(0%)";
 
