@@ -19,10 +19,7 @@ const App = () => {
   };
 
   const fetchUserNames = async () => {
-    /*     axios.defaults.headers.common["Content-Type"] =
-      "application/x-www-form-urlencoded";
-    axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-    axios.defaults.headers.common["Access-Control-Allow-Headers"] = "*"; */
+
     try {
       const resInsta = await axios.get(`https://instagram.com/${input}`);
       document.querySelector(".fa-instagram").style.filter = "grayscale(90%)";
